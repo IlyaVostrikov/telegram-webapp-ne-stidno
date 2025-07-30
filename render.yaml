@@ -1,9 +1,8 @@
 services:
   - type: web
-    name: telegram-webapp-bot
+    name: telegram-webapp-ne-stidno
     env: python
-    buildCommand: ""
-    startCommand: "python bot.py"
-    repo: https://github.com/IlyaVostrikov/telegram-webapp-ne-stidno
-    branch: main
-    autoDeploy: true
+    buildCommand: pip install -r requirements.txt
+    startCommand: python bot.py
+    runtime: python
+    pythonVersion: 3.10.13
