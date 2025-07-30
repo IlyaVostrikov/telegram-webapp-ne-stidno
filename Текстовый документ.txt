@@ -1,0 +1,25 @@
+from aiogram import Bot, Dispatcher, types
+from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton, WebAppInfo
+import asyncio
+
+# ⬇️ ВСТАВЬ СЮДА СВОЙ ТОКЕН ОТ BOTFATHER
+BOT_TOKEN = 'ТВОЙ_ТОКЕН_СЮДА'
+
+bot = Bot(token=BOT_TOKEN)
+dp = Dispatcher()
+
+@dp.message()
+async def start(message: types.Message):
+    keyboard = InlineKeyboardMarkup(inline_keyboard=[
+        [InlineKeyboardButton(
+            text="📲 Открыть меню",
+            web_app=WebAppInfo(url="https://telegram-webapp-ne-stidno.vercel.app")
+        )]
+    ])
+    await message.answer("Привет! Нажми кнопку ниже, чтобы открыть меню ☕", reply_markup=keyboard)
+
+async def main():
+    await dp.start_polling(bot)
+
+if __name__ == "__main__":
+    asyncio.run(main())
